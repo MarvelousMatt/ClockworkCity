@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     [Header ("Wrench")]
 
-    bool wrenchDeployed;
+    bool wrenchDeployed = true;
     public float wrenchThrowSpeed;
     public GameObject wrenchPrefab;
 
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
         HandleVelocity();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !wrenchDeployed)
             ThrowWrench();
 
     }
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         Ray rayB = new Ray(transform.position - Vector3.down * 0.3f, transform.right * Input.GetAxis("Horizontal"));
         Ray rayU = new Ray(transform.position - Vector3.down * -0.3f, transform.right * Input.GetAxis("Horizontal"));
 
-        if (Physics.SphereCast(rayU, 0.1f,0.5f) || Physics.SphereCast(rayB, 0.1f, 0.5f))
+        if (Physics.SphereCast(rayU, 0.1f,0.5f,1,QueryTriggerInteraction.Ignore) || Physics.SphereCast(rayB, 0.1f, 0.5f, 1, QueryTriggerInteraction.Ignore))
         {
             xVel = 0;
             return;
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, Vector3.down);
 
-        if (!Physics.SphereCast(ray, 0.3f, 0.8f))
+        if (!Physics.SphereCast(ray, 0.3f, 0.8f, 1, QueryTriggerInteraction.Ignore))
         {
             return false;
         }
@@ -109,14 +109,29 @@ public class Player : MonoBehaviour
 
     void ThrowWrench()
     {
-        Vector3 throwDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        wrenchDeployed = true;
+
+        Vector3 throwDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 20)) - transform.position;
 
         GameObject wrench = Instantiate(wrenchPrefab, transform.position, Quaternion.identity);
+
+        Quaternion rotStore = wrench.transform.rotation;
+
+        wrench.transform.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 20)));
+
+        wrench.transform.rotation = new Quaternion(rotStore.x, rotStore.y, wrench.transform.rotation.z, rotStore.w);
+
 
         wrench.GetComponent<Rigidbody>().AddForce(throwDirection.normalized * wrenchThrowSpeed);
     }
 
-   
-
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.CompareTag("Wrench") && Input.GetButton("Fire2"))
+        {
+            Destroy(other.gameObject);
+            wrenchDeployed = false;
+        }
+    }
 
 }

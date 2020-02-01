@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3761893067790422536
+--- !u!1 &1262121413344534670
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3761893067790422532}
-  - component: {fileID: 3761893067790422533}
-  - component: {fileID: 3761893067790422538}
-  - component: {fileID: 3761893067790422539}
-  - component: {fileID: 3761893067790422535}
-  - component: {fileID: 5220780479082263843}
-  - component: {fileID: 8737360979529156552}
-  m_Layer: 9
-  m_Name: Wrench
-  m_TagString: Wrench
+  - component: {fileID: 1262121413344534666}
+  - component: {fileID: 1262121413344534665}
+  - component: {fileID: 1262121413344534664}
+  - component: {fileID: 1262121413344534671}
+  - component: {fileID: 1262121413344534667}
+  - component: {fileID: 1262121413344534660}
+  m_Layer: 10
+  m_Name: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3761893067790422532
+--- !u!4 &1262121413344534666
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
+  m_GameObject: {fileID: 1262121413344534670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5270543, y: 7.6868124, z: 0}
-  m_LocalScale: {x: 2.2242508, y: 0.715778, z: 0.52771}
+  m_LocalPosition: {x: -1.39, y: 2.85, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3761893067790422533
+--- !u!33 &1262121413344534665
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
+  m_GameObject: {fileID: 1262121413344534670}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3761893067790422538
+--- !u!23 &1262121413344534664
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
+  m_GameObject: {fileID: 1262121413344534670}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,58 +80,54 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3761893067790422539
+--- !u!65 &1262121413344534671
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
+  m_GameObject: {fileID: 1262121413344534670}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3761893067790422535
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
-  serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 56
-  m_CollisionDetection: 0
---- !u!114 &5220780479082263843
+--- !u!114 &1262121413344534667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
+  m_GameObject: {fileID: 1262121413344534670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aa29dadd6519e542804167982d655f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c770410ed24b5f4ca03948abbae9880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
---- !u!65 &8737360979529156552
-BoxCollider:
+  gravity: 0.01
+  drag: 0.01
+  maxYVel: 25
+  minYVel: 0.25
+  maxXVel: 0.15
+  xSpeed: 1
+  jumpSpeed: 20
+  wrenchThrowSpeed: 3000
+  wrenchPrefab: {fileID: 3761893067790422536, guid: 0af46e28458476743a1878f7d41698f2,
+    type: 3}
+--- !u!54 &1262121413344534660
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761893067790422536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_GameObject: {fileID: 1262121413344534670}
   serializedVersion: 2
-  m_Size: {x: 1.1199895, y: 1.422075, z: 1}
-  m_Center: {x: -0.017949747, y: 0.0045693303, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -10,7 +10,6 @@ public class Wrench : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("EnablePickup",0.5f);
     }
 
     // Update is called once per frame
@@ -19,9 +18,12 @@ public class Wrench : MonoBehaviour
         
     }
 
-    void EnablePickup()
+    private void OnCollisionEnter(Collision collision)
     {
-        gameObject.layer = 12;
+        if (!collision.collider.gameObject.CompareTag("Player"))
+        {
+            gameObject.layer = 0;
+        }
     }
 
 }
