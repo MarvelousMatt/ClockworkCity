@@ -25,6 +25,11 @@ public class DoorTrigger : MonoBehaviour
                 Camera.main.orthographicSize = 20;
             }
 
+            if (ID == 11)
+            {
+                Camera.main.transform.SetParent(other.transform);
+            }
+
 
         }
     }
