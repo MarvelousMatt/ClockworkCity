@@ -7,15 +7,18 @@ public class Wrench : MonoBehaviour
     public enum UseMode { physics,turn,jam,stick};
     public UseMode mode = UseMode.physics;
 
+    bool attached;
+
     // Start is called before the first frame update
     void Start()
     {
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void AttachMode()
     {
-        
+        attached = true;
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
     private void OnCollisionEnter(Collision collision)
