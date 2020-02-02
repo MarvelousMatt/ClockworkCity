@@ -30,6 +30,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButton("Fire2"))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Wrench"));
+            wrenchDeployed = false;
+        }
+
         GroundedCheck();
 
         Movement();
@@ -138,12 +144,11 @@ public class Player : MonoBehaviour
         wrench.GetComponent<Rigidbody>().AddForce(throwDirection.normalized * wrenchThrowSpeed);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Wrench") && Input.GetButton("Fire2"))
+        if (other.gameObject.CompareTag("Death"))
         {
-            Destroy(other.gameObject);
-            wrenchDeployed = false;
+            transform.position = GameManager.instance.playerRespawnPos;
         }
     }
 

@@ -10,7 +10,22 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (ID == 7)
+            {
+                Camera.main.transform.SetParent(null);
+                Camera.main.orthographicSize = 10;
+            }
+
+
             GameManager.instance.NewRoom(ID);
+
+            if(ID == 6)
+            {
+                Camera.main.transform.SetParent(other.transform);
+                Camera.main.orthographicSize = 20;
+            }
+
+
         }
     }
 }

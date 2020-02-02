@@ -30,7 +30,6 @@ public class Wrench : MonoBehaviour
 
         if (collision.collider.gameObject.CompareTag("Oil"))
         {
-            Debug.Log("OIL+");
             GetComponent<Rigidbody>().drag = 0;
             GetComponent<Rigidbody>().mass = 0.1f;
             GetComponent<Rigidbody>().AddForce(GetComponent<Rigidbody>().velocity.normalized * 100);

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public List<Transform> cameraPos = new List<Transform>();
     public List<Transform> respawnPos = new List<Transform>();
 
-    Vector3 playerRespawnPos;
+    public Vector3 playerRespawnPos;
     Camera cam;
     Player player;
 
@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        playerRespawnPos = respawnPos[0].position;
+
 
         cam = Camera.main;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
