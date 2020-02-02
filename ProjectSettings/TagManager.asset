@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wrench
   - Nut
+  - Oil
   layers:
   - Default
   - TransparentFX

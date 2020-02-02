@@ -1,0 +1,16 @@
+breakable movable crates
+jamable gears
+slippery floors
+ending
+
+polish
+level transitions
+menu and credits
+art lol
+music
+vignette and post processing
+
+learn something
+hide the solution
+sequence of actions
+flashiness

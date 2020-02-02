@@ -19,9 +19,14 @@ public class Player : MonoBehaviour
 
     [Header ("Wrench")]
 
-    bool wrenchDeployed = true;
+    public bool wrenchDeployed = true;
     public float wrenchThrowSpeed;
     public GameObject wrenchPrefab;
+
+    [Header("Oil")]
+
+    public float oilDrag;
+    public float nDrag;
 
     private void Update()
     {
@@ -55,7 +60,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            xVel = 0;
+            if(drag != oilDrag)
+                xVel = 0;
         }
 
 
@@ -78,6 +84,13 @@ public class Player : MonoBehaviour
 
         if (!Physics.SphereCast(ray, 0.3f, 0.8f, 1, QueryTriggerInteraction.Ignore))
         {
+            RaycastHit hit;
+            Ray Ray = new Ray(transform.position, Vector3.down);
+
+            if (Physics.Raycast(Ray,out hit,1.5f) && hit.collider.gameObject.tag == "Oil")
+                drag = oilDrag;
+            else
+                drag = nDrag;
             return false;
         }
         else
