@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorTrigger : MonoBehaviour
 {
@@ -27,10 +28,14 @@ public class DoorTrigger : MonoBehaviour
 
             if (ID == 11)
             {
-                Camera.main.transform.SetParent(other.transform);
+                SceneManager.LoadScene(2);
             }
 
 
         }
     }
+
+
+
+
 }
